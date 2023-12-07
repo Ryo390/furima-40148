@@ -6,7 +6,7 @@
 |Column             |Type       |Options                       |
 |-------------------|-----------|------------------------------|
 |nickname           |string     |null: false                   |
-|date               |date       |null: false                   |
+|birthday           |date       |null: false                   |
 |email              |string     |null: false, unique: true     |
 |encrypted_password |string     |null: false                   |
 |last_name_zen      |string     |null: false                   |
@@ -25,18 +25,21 @@
 |Column          |Type       |Options                       |
 |----------------|-----------|------------------------------|
 |item_name       |string     |null: false                   |
-|image           |string     |null: false                   |
 |price           |integer    |null: false                   |
 |postage         |integer    |null: false                   |
 |category        |string     |null: false                   |
 |seller          |string     |null: false                   |
+|delivery_time   |string     |null: false                   |
 |item_condition  |string     |null: false                   |
 |shipping_source |string     |null: false                   |
+|user_id         |references |null: false, foreign_key: true|
+|item_id         |references |null: false, foreign_key: true|
 
 
 ### Association
 
-- belongs_to :users
+- belongs_to :user
+- belongs_to :item
 - has_one :shipping_address
 
 
@@ -46,10 +49,11 @@
 |--------------|-----------|------------------------------|
 |item_name     |string     |null: false                   |
 |customer_name |string     |null: false                   |
+|user_id       |references |null: false, foreign_key: true|
 
 ### Association
-- belongs_to :users
-- has_one :shipping_address
+- belongs_to :user
+- has_many :items
 
 
 ## Shipping_addressテーブル
@@ -59,12 +63,10 @@
 |post_code       |string     |null: false                   |
 |prefectures     |string     |null: false                   |
 |municipalities  |string     |null: false                   |
-|street_address |string     |null: false                   |
-|building_name   |string     |null: false                   |
-|phonenumber     |integer    |null: false                   |
-|record_id       |integer    |null: false, foreign_key: true|
+|street_address  |string     |null: false                   |
+|building_name   |string     |                              |
+|phonenumber     |string     |null: false                   |
 
 ### Association
 
-- has_one :items
-- has one :purchas_record
+- has_one :item
