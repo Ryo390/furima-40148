@@ -34,7 +34,7 @@
 |shipping_source |string     |null: false                   |
 |user_id         |references |null: false, foreign_key: true|
 |item_id         |references |null: false, foreign_key: true|
-
+|genre_id        |integer    |null: false                   |
 
 ### Association
 
@@ -50,6 +50,7 @@
 |item_name     |string     |null: false                   |
 |customer_name |string     |null: false                   |
 |user_id       |references |null: false, foreign_key: true|
+|item_id       |references |null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -66,7 +67,7 @@
 |street_address  |string     |null: false                   |
 |building_name   |string     |                              |
 |phonenumber     |string     |null: false                   |
+|item_id         |references |null: false, foreign_key: true|
 
 ### Association
-
 - has_one :item
