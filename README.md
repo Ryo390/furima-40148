@@ -27,17 +27,17 @@
 |item_name            |string     |null: false                   | 商品名
 |price                |integer    |null: false                   | 販売価格
 |description_item     |string     |null: false                   | 商品説明
-|item_details         |genre_id   |null: false                   | 商品詳細
-|shipping_information |genre_id   |null: false                   | 配送情報
+|item_details         |string     |null: false                   | 商品詳細
+|category_id          |integer    |null: false                   | 商品のカテゴリー ah
+|item_condition_id    |integer    |null: false                   | 商品の状態 ah
+|shipping_information |string     |null: false                   | 配送情報
+|prefectures_id       |integer    |null: false                   | 発送元(都道府県) ah
+|postage_id           |integer    |null: false                   | 配送料 ah
+|delivery_date_id     |integer    |null: false                   | 発送までの日数 ah
 |user                 |references |null: false, foreign_key: true|
-|item                 |references |null: false, foreign_key: true|
-|sipping_address      |references |null: false, foreign_key: true|
-
 ### Association
 
 - belongs_to :user
-- has_one :purchas_record
-- has_one :shipping_address
 
 
 ## Purchas_recordsテーブル
@@ -49,8 +49,6 @@
 
 ### Association
 - belongs_to :user
-- has_one :item
-- has_one :shipping_address
 
 
 ## Shipping_addressesテーブル
@@ -58,7 +56,7 @@
 |Column          |Type       |Options                       |
 |----------------|-----------|------------------------------|
 |post_code       |string     |null: false                   | 郵便番号
-|prefectures     |genre_id   |null: false                   | 都道府県
+|prefectures_id  |integer    |null: false                   | 都道府県 ah
 |municipalities  |string     |null: false                   | 市区町村
 |street_address  |string     |null: false                   | 住所
 |building_name   |string     |                              | 建物名
@@ -66,5 +64,4 @@
 |purchas_record  |references |null: false, foreign_key: true|
 
 ### Association
-- has_one :item
 - has_one :purchas_record
