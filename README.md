@@ -26,7 +26,7 @@
 |---------------------|-----------|------------------------------|
 |item_name            |string     |null: false                   | 商品名
 |price                |integer    |null: false                   | 販売価格
-|description_item     |string     |null: false                   | 商品説明
+|description_item     |text       |null: false                   | 商品説明
 |category_id          |integer    |null: false                   | 商品のカテゴリー ah
 |item_condition_id    |integer    |null: false                   | 商品の状態 ah
 |prefecture_id        |integer    |null: false                   | 発送元(都道府県) ah
