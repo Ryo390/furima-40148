@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
-  # def index
-  #   @items = Item.new
-  # end
+  def index
+    #   @items = Item.new
+  end
 
   # def new
   #   @item = Item.new
@@ -17,5 +17,4 @@ class ItemsController < ApplicationController
   #     render :new, status: :unprocessab
   #   end
   # end
-
 end
