@@ -5,9 +5,9 @@ class ItemsController < ApplicationController
     #   @items = Item.new
   end
 
-  # def new
-  #   @item = Item.new
-  # end
+  def new
+    @item = Item.new
+  end
 
   # def create
   #   @item = Item.new(item_params)
@@ -17,4 +17,10 @@ class ItemsController < ApplicationController
   #     render :new, status: :unprocessab
   #   end
   # end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:content, :image).merge(user_id: current_user.id)
+  end
 end

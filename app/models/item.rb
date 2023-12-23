@@ -14,7 +14,12 @@ class Item < ApplicationRecord
 
   # belongs_to :user
   # has_one :purchas_record
+  belongs_to :category
+  belongs_to :condition
+  belongs_to :postage
   belongs_to :nationwide
+  belongs_to :delivery
+  has_one_attached :image
 
   validates :title, :text, presence: true
   validates :nationwide_id, numericality: { other_than: 1 , message: "can't be blank"}
