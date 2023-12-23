@@ -2,25 +2,25 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :nationwide
 
-  validates :item_name
-  validates :price
-  validates :description_item
-  validates :category_id
-  validates :item_condition_id
-  validates :prefecture_id
-  validates :postage_id
-  validates :delivery_date_id
-  validates :user
+  validates :item_name, presence: true
+  validates :price, presence: true
+  validates :description_item, presence: true
+  validates :category_id, presence: true
+  validates :item_condition_id, presence: true
+  validates :prefecture_id, presence: true
+  validates :postage_id, presence: true
+  validates :delivery_date_id, presence: true
+  validates :user, presence: true
 
   # belongs_to :user
   # has_one :purchas_record
   belongs_to :category
   belongs_to :condition
   belongs_to :postage
-  belongs_to :nationwide
+  belongs_to :prefectur
   belongs_to :delivery
   has_one_attached :image
 
   validates :title, :text, presence: true
-  validates :nationwide_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"}
 end
