@@ -1,6 +1,6 @@
 class CreatePrefectures < ActiveRecord::Migration[7.0]
   def change
-    create_table :nationwide do |t|
+    create_table :prefecture do |t|
 
       t.timestamps
     end
