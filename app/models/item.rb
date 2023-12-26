@@ -2,7 +2,8 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
 
   validates :item_name, presence: true, length: { maximum: 40 }
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, only_integer: true }
+  validates :price, presence: true,
+                    numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, only_integer: true }
   validates :description_item, presence: true, length: { maximum: 1000 }
   validates :category_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
   validates :item_condition_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
@@ -19,5 +20,4 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :delivery_date
   has_one_attached :image
-
 end
