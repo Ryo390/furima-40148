@@ -16,7 +16,7 @@
 
 ### Association
 
-- has_many :purchases_records
+- has_many :purchases
 - has_many :items
 
 
@@ -36,10 +36,10 @@
 ### Association
 
 - belongs_to :user
-- has_one :purchas_record
+- has_one :purchas
 
 
-## Purchas_recordsテーブル
+## Purchasesテーブル
 
 |Column        |Type       |Options                       |
 |--------------|-----------|------------------------------|
@@ -49,10 +49,10 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :shipping_address
+- has_one :address
 
 
-## Shipping_addressesテーブル
+## Addressesテーブル
 
 |Column          |Type       |Options                       |
 |----------------|-----------|------------------------------|
@@ -61,8 +61,8 @@
 |municipalities  |string     |null: false                   | 市区町村
 |street_address  |string     |null: false                   | 住所
 |building_name   |string     |                              | 建物名
-|phonenumber     |string     |null: false                   | 電話番号
-|purchas_record  |references |null: false, foreign_key: true|
+|phone_number    |string     |null: false                   | 電話番号
+|purchase         |references |null: false, foreign_key: true|
 
 ### Association
-- has_one :purchas_record
+- has_one :purchas
