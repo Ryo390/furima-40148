@@ -62,7 +62,7 @@
 |street_address  |string     |null: false                   | 住所
 |building_name   |string     |                              | 建物名
 |phone_number    |string     |null: false                   | 電話番号
-|purchase         |references |null: false, foreign_key: true|
+|purchase        |references |null: false, foreign_key: true|
 
 ### Association
 - has_one :purchas
