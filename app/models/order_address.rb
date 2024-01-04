@@ -4,11 +4,10 @@ class OrderAddress
                 :token, :purchase_id
 
   with_options presence: true do
-    validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }, presence: true
+    validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
     validates :municipalities
     validates :street_address
-    validates :phone_number, format: { without: /\A\d{1,3}-\d{1,4}-\d{4}\z/, message: 'is invalid' },
-                             length: { maximum: 11, minimum: 10 }
+    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'is invalid' }
     validates :user_id
     validates :item_id
     validates :token

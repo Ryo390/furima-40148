@@ -1,9 +1,9 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: :index #ログインしていない人をログイン画面に遷移する
+  before_action :set_purchase, only: [:index, :show, :create]
 
 
   def index
-    @item = Item.find(params[:item_id])
     if @item.purchase.present? || current_user.id == @item.user_id
       redirect_to root_path
     end
@@ -13,7 +13,6 @@ class PurchasesController < ApplicationController
 
   def create
     @order_address = OrderAddress.new(purchase_params)
-    @item = Item.find(params[:item_id])
     if @order_address.valid?
       pay_item
       @order_address.save
@@ -25,7 +24,6 @@ class PurchasesController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:item_id])
   end
 
   private
@@ -45,8 +43,7 @@ class PurchasesController < ApplicationController
     )
   end
 
-  # def set_purchase
-  #   @item = Item.find(params[:item_id]) #indexとshow
-  # end
-
+  def set_purchase
+    @item = Item.find(params[:item_id])
+  end
 end

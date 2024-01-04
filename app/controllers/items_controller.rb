@@ -62,9 +62,4 @@ class ItemsController < ApplicationController
   def non_poster_to_root
     redirect_to root_path unless current_user.id == @item.user.id
   end
-
-  # def set_item
-  # @item = Item.find(params.require(:id)) #showとedit
-  # end
-
 end

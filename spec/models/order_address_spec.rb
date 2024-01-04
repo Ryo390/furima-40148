@@ -103,12 +103,12 @@ RSpec.describe OrderAddress, type: :model do
         it '電話番号が12桁以上であると保存できないこと' do
           @order_address.phone_number = '090111122223333'
           @order_address.valid?
-          expect(@order_address.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
+          expect(@order_address.errors.full_messages).to include('Phone number is invalid')
         end
         it '電話番号が9桁以下であると保存できないこと' do
           @order_address.phone_number = '0901111'
           @order_address.valid?
-          expect(@order_address.errors.full_messages).to include('Phone number is too short (minimum is 10 characters)')
+          expect(@order_address.errors.full_messages).to include('Phone number is invalid')
         end
         it 'トークンが空だと保存できないこと' do
           @order_address.token = ''
