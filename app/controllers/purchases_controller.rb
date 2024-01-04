@@ -1,10 +1,14 @@
 class PurchasesController < ApplicationController
-  before_action :authenticate_user!, only: :index
+  before_action :authenticate_user!, only: :index #ログインしていない人をログイン画面に遷移する
+
 
   def index
+    @item = Item.find(params[:item_id])
+    if @item.purchase.present? || current_user.id == @item.user_id
+      redirect_to root_path
+    end
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
     @order_address = OrderAddress.new
-    @item = Item.find(params[:item_id])
   end
 
   def create
@@ -21,7 +25,7 @@ class PurchasesController < ApplicationController
   end
 
   def show
-    @item = Item.find(params.require(:id))
+    @item = Item.find(params[:item_id])
   end
 
   private
@@ -40,4 +44,9 @@ class PurchasesController < ApplicationController
       currency: 'jpy'
     )
   end
+
+  # def set_purchase
+  #   @item = Item.find(params[:item_id]) #indexとshow
+  # end
+
 end
