@@ -5,11 +5,12 @@ FactoryBot.define do
     description_item  { Faker::Lorem.sentence }
     category_id       { 2 }
     item_condition_id { 2 }
-    prefecture_id     { 2 }
+    prefecture_id     { Faker::Number.between(from: 1, to: 47) }
     postage_id        { 2 }
     delivery_date_id  { 2 }
     association :user
     after(:build) do |item|
+      
       item.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
     end
   end
