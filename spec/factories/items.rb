@@ -5,7 +5,7 @@ FactoryBot.define do
     description_item  { Faker::Lorem.sentence }
     category_id       { 2 }
     item_condition_id { 2 }
-    prefecture_id     { 2 }
+    prefecture_id     { Faker::Number.between(from: 2, to: 48) }
     postage_id        { 2 }
     delivery_date_id  { 2 }
     association :user

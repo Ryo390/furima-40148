@@ -13,7 +13,7 @@ class Item < ApplicationRecord
   validates :image, presence: true
 
   belongs_to :user
-  # has_one :purchas_record
+  has_one :purchase
   belongs_to :category
   belongs_to :item_condition
   belongs_to :postage
