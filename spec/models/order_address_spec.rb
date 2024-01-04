@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe OrderAddress, type: :model do
   describe '配送先情報の保存' do
     before do
-    @item = FactoryBot.create(:item)
-    @user = FactoryBot.create(:user)
-    @order_address = FactoryBot.build(:order_address)
-    @purchase = FactoryBot.create(:purchase, item: @item, user: @user)
-    @order_address.user_id = @user.id
-    @order_address.item_id = @item.id
-    @order_address.purchase_id = @purchase.id
+      @item = FactoryBot.create(:item)
+      @user = FactoryBot.create(:user)
+      @order_address = FactoryBot.build(:order_address)
+      @purchase = FactoryBot.create(:purchase, item: @item, user: @user)
+      @order_address.user_id = @user.id
+      @order_address.item_id = @item.id
+      @order_address.purchase_id = @purchase.id
     end
 
     context '配送先情報の保存ができるとき' do
@@ -66,9 +66,9 @@ RSpec.describe OrderAddress, type: :model do
           expect(@order_address.errors.full_messages).to include("Post code can't be blank")
         end
         it '郵便番号にハイフンがないと保存できないこと' do
-          @order_address.post_code = 1234567
+          @order_address.post_code = 1_234_567
           @order_address.valid?
-          expect(@order_address.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+          expect(@order_address.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
         end
         it '都道府県が「---」だと保存できないこと' do
           @order_address.prefecture_id = 1
@@ -98,7 +98,7 @@ RSpec.describe OrderAddress, type: :model do
         it '電話番号にハイフンがあると保存できないこと' do
           @order_address.phone_number = '090-1111-2222'
           @order_address.valid?
-          expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+          expect(@order_address.errors.full_messages).to include('Phone number is invalid')
         end
         it '電話番号が12桁以上であると保存できないこと' do
           @order_address.phone_number = '090111122223333'

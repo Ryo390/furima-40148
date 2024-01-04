@@ -36,10 +36,10 @@
 ### Association
 
 - belongs_to :user
-- has_one :purchas
+- has_one :purchase
 
 
-## Purchasesテーブル
+## Purchasesテーブル（購入記録）
 
 |Column        |Type       |Options                       |
 |--------------|-----------|------------------------------|
@@ -65,4 +65,4 @@
 |purchase        |references |null: false, foreign_key: true|
 
 ### Association
-- has_one :purchas
+- has_one :purchase
