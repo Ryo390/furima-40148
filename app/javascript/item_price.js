@@ -7,7 +7,7 @@ function price(){
     addTaxDom.innerHTML = Math.floor(priceInput.value * feeRate);
   const addProfitDom = document.getElementById("profit");
     let fee = 0.9;
-    addProfitDom.innerHTML = Math.floor(priceInput.value * fee);
+    addProfitDom.innerHTML = Math.ceil(priceInput.value * fee);
   });
 };
 
